@@ -13,9 +13,10 @@ import booksystem.user.User;
  * 继承java.awt.JFrame
  */
 public class Login extends JFrame {
+    /*
     public static void main(String[] args) {
         (new Login()).showUI();
-    }
+    }*/
     private JLabel welcome,userNameLabel,userPassLabel;
     private JTextField userName;
     private JPasswordField userPass;
