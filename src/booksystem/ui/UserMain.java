@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 /**
  * 登陆后显示的主界面
- * 包含功能入口：用户个人信息 查询图书 登出 修改密码
+ * 包含功能入口：用户借阅信息 查询图书 借阅图书 归还图书 登出 修改密码
  */
 public class UserMain extends JFrame {
     private JPanel borrowInfo,searchBook,borrowBook,
