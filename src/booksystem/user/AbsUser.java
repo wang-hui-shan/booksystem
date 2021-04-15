@@ -1,7 +1,7 @@
 package booksystem.user;
 /**
  * 用户抽象类
- * 定义用户基本属性 用户名 密码 用户角色
+ * 定义用户基本属性 用户名 用户id 用户角色
  */
 public abstract class AbsUser {
     private int userId;
