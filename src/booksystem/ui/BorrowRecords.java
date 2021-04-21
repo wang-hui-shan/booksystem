@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.HashMap;
 
 /**
- * 查看用户信息的界面
+ * 查看用户借阅信息的界面
  */
 
 public class BorrowRecords extends JFrame {

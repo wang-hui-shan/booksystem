@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 /**
  * 登陆后显示的主界面
- * 包含功能入口：用户个人信息 查询图书 登出 修改密码
+ * 包含功能入口：查询图书 增加图书 删除图书 登出 修改密码
  */
 public class AdminMain extends JFrame {
     private JPanel searchBook,addBook,deleteBook,modifyPass,logout;
