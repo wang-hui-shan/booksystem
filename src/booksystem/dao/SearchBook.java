@@ -32,6 +32,7 @@ public class SearchBook {
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
+            statement.execute("begin;");
             //要执行的SQL语句
             String sql = "select * from bookinfo where " + typeToCol.get(this.searchType) +"=" + "\"" + this.searchInfo+"\"";
             //3.ResultSet类，用来存放获取的结果集！！
@@ -46,6 +47,7 @@ public class SearchBook {
                 bookInfo.add(temp.clone()); //不可以直接添加，否则clear()之后，bookInfo中存储的也会clear
                 temp.clear();
             }
+            statement.execute("commit;");
         } catch(SQLException e1) {
             e1.printStackTrace();
         } catch (Exception e2) {

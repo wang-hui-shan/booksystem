@@ -15,10 +15,12 @@ public class AddBook {
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //创建statement类对象
             Statement statement = con.createStatement();
+            statement.execute("begin;");
             String sql = "insert into bookinfo(bookname,bookauthor,booktheme) values" + "(\"" + bookInfo[0]+"\",\""+ bookInfo[1]+ "\",\"" +bookInfo[2]+ "\")";
             System.out.println(sql);
             if(statement.executeUpdate(sql) == 1)
                 complete = true;
+            statement.execute("commit;");
         } catch(SQLException e1) {
             e1.printStackTrace();
         } catch (Exception e2) {

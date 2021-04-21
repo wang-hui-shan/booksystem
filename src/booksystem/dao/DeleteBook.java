@@ -15,6 +15,7 @@ public class DeleteBook {
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //创建statement类对象
             Statement statement = con.createStatement();
+            statement.execute("begin;");
             // 确认图书未被借阅
             // 将图书删除
             ResultSet rs = statement.executeQuery("select bookstatus from bookinfo where bookid=" + this.bookId);
@@ -22,6 +23,7 @@ public class DeleteBook {
                 statement.executeUpdate("delete from bookinfo where bookid=" + this.bookId);
                 complete = true;
             }
+            statement.execute("commit;");
         } catch(SQLException e1) {
             e1.printStackTrace();
         } catch (Exception e2) {

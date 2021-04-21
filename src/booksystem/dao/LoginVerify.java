@@ -27,6 +27,7 @@ public class LoginVerify {
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
+            statement.execute("begin;");
             //要执行的SQL语句
             String sql = "select userpass from "+ role +" where username=\"" + username + "\"";
             //3.ResultSet类，用来存放获取的结果集！！
@@ -44,6 +45,7 @@ public class LoginVerify {
                 int userid = rs.getInt("userid");
                 this.userId = userid;
             }
+            statement.execute("commit;");
         } catch(SQLException e1) {
             //数据库连接失败异常处理
             e1.printStackTrace();

@@ -19,6 +19,7 @@ public class UserRegister {
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
+            statement.execute("begin;");
             //要执行的SQL语句
             String sql = "select username from user where username=\"" + username + "\"";
             //3.ResultSet类，用来存放获取的结果集！！
@@ -28,6 +29,7 @@ public class UserRegister {
                 sql = "insert into user(username,userpass) values (" + "\"" + username + "\"" + "," + "\"" + password + "\"" + ")";
                 statement.executeUpdate(sql);
             }
+            statement.execute("commit;");
         } catch(SQLException e1) {
             e1.printStackTrace();
         } catch (Exception e2) {

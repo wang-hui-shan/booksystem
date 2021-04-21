@@ -20,6 +20,7 @@ public class GetBorrowBook {
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
+            statement.execute("begin;");
             //要执行的SQL语句
             String sql = "select bookid,bookname from userbookinfo where userid=" + userId;
             //3.ResultSet类，用来存放获取的结果集！！
@@ -29,6 +30,7 @@ public class GetBorrowBook {
                 String bookName = rs.getString("bookname");
                 bookList.put(bookId,bookName);
             }
+            statement.execute("commit;");
         } catch(SQLException e1) {
             e1.printStackTrace();
         } catch (Exception e2) {
