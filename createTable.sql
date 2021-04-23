@@ -28,7 +28,7 @@ userid int unsigned not null ,
 bookid int unsigned not null,
 bookname varchar(100)
 );
-insert into userbookinfo values (1,1,"房思琪的秘密花园"),(2,2,"java编程思想"),(1,3,"java编程思想");
+insert into userbookinfo(userid,bookid,bookname) values (1,1,"房思琪的秘密花园"),(2,2,"java编程思想"),(1,3,"java编程思想");
 update bookinfo set bookstatus=1 where bookid=1 or bookid=2 or bookid=3;
 
 
