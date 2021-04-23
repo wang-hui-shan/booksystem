@@ -26,13 +26,7 @@ insert into bookinfo(bookname,bookauthor,booktheme) values ("房思琪的秘密�
 create table userbookinfo(
 userid int unsigned not null ,
 bookid int unsigned not null,
-bookname varchar(100),
-constraint key_user
-foreign key(userid)
-references user(userid),
-constraint key_bobookidok
-foreign key(bookid)
-references bookinfo(bookid)
+bookname varchar(100)
 );
 insert into userbookinfo values (1,1,"房思琪的秘密花园"),(2,2,"java编程思想"),(1,3,"java编程思想");
 update bookinfo set bookstatus=1 where bookid=1 or bookid=2 or bookid=3;
