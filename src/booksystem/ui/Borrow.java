@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Borrow extends JFrame{
-
     private JButton returnBook;
     private JTextField bookId;
     private JLabel sign;
@@ -17,10 +16,10 @@ public class Borrow extends JFrame{
         this.setLayout(new FlowLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        prepareUi();
+        prepareUI();
     }
 
-    void showUi() {
+    void showUI() {
         this.add(sign);
         this.add(bookId);
         this.add(returnBook);
@@ -30,7 +29,7 @@ public class Borrow extends JFrame{
         this.setVisible(true);
     }
 
-    private void prepareUi() {
+    private void prepareUI() {
         sign = new JLabel("请输入要借阅的图书编号:");
         sign.setFont(new Font("宋体",0,20));
 

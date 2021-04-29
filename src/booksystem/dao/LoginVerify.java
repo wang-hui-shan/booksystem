@@ -21,7 +21,6 @@ public class LoginVerify {
         //URL指向要访问的数据库名mydata
         //遍历查询结果集
         //加载驱动程序
-        //
         //1.getConnection()方法，连接MySQL数据库！！
         try(Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
@@ -50,7 +49,6 @@ public class LoginVerify {
             //数据库连接失败异常处理
             e1.printStackTrace();
         } catch (Exception e2) {
-            // TODO: handle exception
             e2.printStackTrace();
         }
         return this.userId;

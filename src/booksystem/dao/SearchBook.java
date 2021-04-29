@@ -1,8 +1,8 @@
 package booksystem.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Vector;
 
 public class SearchBook {
     private String searchInfo,searchType;
@@ -16,18 +16,11 @@ public class SearchBook {
     public SearchBook(String searchInfo, String searchType) {
         this.searchInfo = searchInfo;
         this.searchType = searchType;
-        getBook();
     }
 
-    public Vector getBook() {
-        Vector bookInfo = new Vector();
-        //驱动程序名
-        //String driver = "com.mysql.jc.jdbc.Driver";
-        //URL指向要访问的数据库名mydata
-        //遍历查询结果集
-        //加载驱动程序
-        //Class.forName(driver);
-        //1.getConnection()方法，连接MySQL数据库！！
+    public HashMap<Integer, ArrayList<String>> getBook() {
+        HashMap<Integer, ArrayList<String>> booksInfo = new HashMap<>();
+
         try(Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/booksystem?serverTimezone=GMT%2B8","root","200425")) {
             //2.创建statement类对象，用来执行SQL语句！！
@@ -37,15 +30,13 @@ public class SearchBook {
             String sql = "select * from bookinfo where " + typeToCol.get(this.searchType) +"=" + "\"" + this.searchInfo+"\"";
             //3.ResultSet类，用来存放获取的结果集！！
             ResultSet rs = statement.executeQuery(sql);
-            Vector temp = new Vector();
             while(rs.next()){
-                temp.add(rs.getInt("bookid") + "");
-                temp.add(rs.getString("bookname"));
-                temp.add(rs.getString("bookauthor"));
-                temp.add(rs.getString("booktheme"));
-                temp.add(rs.getInt("bookstatus") + "");
-                bookInfo.add(temp.clone()); //不可以直接添加，否则clear()之后，bookInfo中存储的也会clear
-                temp.clear();
+                ArrayList<String> values = new ArrayList();
+                values.add(rs.getString("bookname"));
+                values.add(rs.getString("bookauthor"));
+                values.add(rs.getString("booktheme"));
+                values.add(rs.getString("bookstatus"));
+                booksInfo.put(rs.getInt("bookid"),(ArrayList<String>) values.clone());
             }
             statement.execute("commit;");
         } catch(SQLException e1) {
@@ -53,6 +44,6 @@ public class SearchBook {
         } catch (Exception e2) {
             e2.printStackTrace();
         }
-        return bookInfo;
+        return booksInfo;
     }
 }

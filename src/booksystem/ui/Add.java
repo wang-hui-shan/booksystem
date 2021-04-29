@@ -7,13 +7,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Add_ extends JFrame {
+public class Add extends JFrame {
     private JButton addButton;
     private JLabel name, author, theme;
     private JTextField bookName, bookAuthor, bookTheme;
     private JPanel namePanel, authorPanel, themePanel, buttonPanel;
 
-    public Add_() {
+    public Add() {
         this.setLayout(new GridLayout(4,1));
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

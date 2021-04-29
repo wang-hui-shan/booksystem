@@ -8,9 +8,8 @@ import java.awt.*;
 import java.util.HashMap;
 
 /**
- * 查看用户借阅信息的界面
+ * 查看用户借阅信息
  */
-
 public class BorrowRecords extends JFrame {
     private JTable bookList;
     private JScrollPane table;
@@ -25,20 +24,21 @@ public class BorrowRecords extends JFrame {
         table = new JScrollPane(bookList); // 要在定义好table之后再构造
         this.add(table);
 
-        //this.setBounds(400,200,420, 5200); /** 设置窗体大小 */
+        //this.setBounds(400,200,420, 520); /** 设置窗体大小 */
         //this.setResizable(false); /** 不可放大 */
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     private void prepareUI() {
-        GetBorrowBook ub = new GetBorrowBook(Login.user.getUserId());
-        HashMap<Integer,String> books = ub.getBookList();
+        GetBorrowBook userBooks = new GetBorrowBook(Login.user.getUserId());
+
+        HashMap<Integer,String> books = userBooks.getBookList();
         int numRows = books.size();
         Object[][] table = new Object[numRows][2];
-        for(Integer bookid : books.keySet()) {
-            table[numRows-1][0] = bookid;
-            table[(numRows--)-1][1] = books.get(bookid);
+        for(Integer bookId : books.keySet()) {
+            table[numRows-1][0] = bookId;
+            table[(numRows--)-1][1] = books.get(bookId);
         }
         String[] colsName = {"图书编号","书名"};
         bookList = new JTable(new DefaultTableModel(table, colsName){

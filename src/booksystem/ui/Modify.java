@@ -18,6 +18,11 @@ public class Modify extends JFrame {
         //setIconImage(new ImageIcon(getClass().getResource("")).getImage());
         this.setLayout(new GridLayout(4,1));
 
+        this.setBounds(400,200,420, 240); /** 设置窗体大小 */
+        this.setResizable(false); /** 不可放大 */
+        //this.pack();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         oldPassPanel = new JPanel();
         oldPassPanel.setLayout(new FlowLayout());
 
@@ -28,11 +33,6 @@ public class Modify extends JFrame {
         confirmPassPanel.setLayout(new FlowLayout());
 
         confirmPanel = new JPanel();
-
-        this.setBounds(400,200,420, 240); /** 设置窗体大小 */
-        this.setResizable(false); /** 不可放大 */
-        //this.pack();
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         prepareUI();
     }
@@ -53,7 +53,6 @@ public class Modify extends JFrame {
         this.add(confirmPassPanel);
         this.add(confirmPanel);
 
-        this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

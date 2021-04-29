@@ -15,10 +15,10 @@ public class Delete extends JFrame{
     public Delete() {
         this.setLayout(new FlowLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        prepareUi();
+        prepareUI();
     }
 
-    void showUi() {
+    public void showUI() {
         this.add(sign);
         this.add(bookId);
         this.add(deleteBook);
@@ -28,7 +28,7 @@ public class Delete extends JFrame{
         this.setVisible(true);
     }
 
-    private void prepareUi() {
+    private void prepareUI() {
         sign = new JLabel("请输入要删除的图书编号:");
         sign.setFont(new Font("宋体",0,20));
 

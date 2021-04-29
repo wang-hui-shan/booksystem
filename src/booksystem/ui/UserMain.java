@@ -6,8 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 登陆后显示的主界面
+ * 普通用户登陆后显示的主界面
  * 包含功能入口：用户借阅信息 查询图书 借阅图书 归还图书 登出 修改密码
+ * 按钮触发事件：
+ * borrowBookButtonActionPerformed returnBookButtonActionPerformed
+ * logoutButtonActionPerformed modifyPassButtonActionPerformed
+ * searchBookButtonActionPerformed userInfoButtonActionPerformed
  */
 public class UserMain extends JFrame {
     private JPanel borrowInfo,searchBook,borrowBook,
@@ -19,6 +23,7 @@ public class UserMain extends JFrame {
         this.setTitle("主界面");
         //setIconImage(new ImageIcon(getClass().getResource("")).getImage());
         this.setLayout(new GridLayout(6,1));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         borrowInfo = new JPanel();
         searchBook = new JPanel();
@@ -26,8 +31,6 @@ public class UserMain extends JFrame {
         returnBook = new JPanel();
         modifyPass = new JPanel();
         logout = new JPanel();
-
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         prepareUI();
     }
@@ -119,12 +122,12 @@ public class UserMain extends JFrame {
 
     private void borrowBookButtonActionPerformed(ActionEvent e) {
         Borrow b = new Borrow();
-        b.showUi();
+        b.showUI();
     }
 
     private void returnBookButtonActionPerformed(ActionEvent e) {
         Return rb = new Return();
-        rb.showUi();
+        rb.showUI();
     }
 
     private void logoutButtonActionPerformed(ActionEvent e) {
@@ -138,7 +141,7 @@ public class UserMain extends JFrame {
 
     private void searchBookButtonActionPerformed(ActionEvent e) {
         Search s = new Search();
-        s.showUi();
+        s.showUI();
     }
 
     private void userInfoButtonActionPerformed(ActionEvent e) {

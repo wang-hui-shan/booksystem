@@ -23,6 +23,8 @@ public class Register extends JFrame {
         this.setTitle("注册界面");
         //setIconImage(new ImageIcon(getClass().getResource("")).getImage());
         this.setLayout(new GridLayout(4,1));
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         name = new JPanel();
         name.setLayout(new FlowLayout());
 
@@ -33,8 +35,6 @@ public class Register extends JFrame {
         ensure.setLayout(new FlowLayout());
 
         button = new JPanel(new FlowLayout());
-
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         prepareUI();
     }
@@ -89,7 +89,6 @@ public class Register extends JFrame {
         registerButton = new JButton("确认注册");
         registerButton.setFont(new Font("宋体", 0, 20));
 
-        // 登录按钮设置快捷键
         registerButton.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -98,6 +97,7 @@ public class Register extends JFrame {
                 }
             }
         });
+
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -134,5 +134,4 @@ public class Register extends JFrame {
             }
         }
     }
-
 }

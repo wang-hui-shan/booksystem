@@ -6,28 +6,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 登陆后显示的主界面
+ * 管理员登陆后显示的主界面
  * 包含功能入口：查询图书 增加图书 删除图书 登出 修改密码
+ * 按钮触发事件: deleteBookButtonActionPerformed
+ * addBookButtonActionPerformed searchBookButtonActionPerformed
+ * logoutButtonActionPerformed modifyPassButtonActionPerformed
  */
 public class AdminMain extends JFrame {
     private JPanel searchBook,addBook,deleteBook,modifyPass,logout;
     private JButton searchBookButton,
             addBookButton,deleteBookButton,modifyPassButton,logoutButton;
+
     public AdminMain() {
         this.setTitle("主界面");
         this.setLayout(new GridLayout(5,1));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         searchBook = new JPanel();
-
         addBook = new JPanel();
         deleteBook = new JPanel();
         modifyPass = new JPanel();
         logout = new JPanel();
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         prepareUI();
     }
+
     public void showUI(){
         searchBook.add(searchBookButton);
         addBook.add(addBookButton);
@@ -47,6 +50,7 @@ public class AdminMain extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
     private void prepareUI() {
         searchBookButton = new JButton("查询图书");
         searchBookButton.setFont(new Font("宋体", 0, 20));
@@ -94,30 +98,33 @@ public class AdminMain extends JFrame {
             }
         });
     }
+
     // 删除图书
     private void deleteBookButtonActionPerformed(ActionEvent e) {
         Delete d = new Delete();
-        d.showUi();
+        d.showUI();
     }
+
     // 增加图书
     private void addBookButtonActionPerformed(ActionEvent e) {
-        Add_ a = new Add_();
+        Add a = new Add();
         a.showUi();
     }
+
     //查询图书
     private void searchBookButtonActionPerformed(ActionEvent e) {
         Search s = new Search();
-        s.showUi();
+        s.showUI();
     }
+
     //登出
     private void logoutButtonActionPerformed(ActionEvent e) {
         System.exit(0);
     }
+
     // 修改密码
     private void modifyPassButtonActionPerformed(ActionEvent e) {
         Modify m = new Modify();
         m.showUi();
     }
-
-
 }

@@ -1,9 +1,9 @@
 package booksystem.ui;
 
-class mainTest implements Runnable{
+public class mainTest implements Runnable{
     @Override
     public void run() {
-        Login l = new Login();
-        l.showUI();
+        Login login = new Login();
+        login.showUI();
     }
 }

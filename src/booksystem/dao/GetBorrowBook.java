@@ -5,10 +5,12 @@ import java.util.HashMap;
 
 public class GetBorrowBook {
     private int userId;
+
     public GetBorrowBook(int userId) {
         // 获取用户输入的用户名和密码
         this.userId = userId;
     }
+
     public HashMap getBookList() {
         //书单
         HashMap<Integer,String> bookList = new HashMap<>();

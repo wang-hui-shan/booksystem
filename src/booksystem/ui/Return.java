@@ -14,10 +14,11 @@ public class Return extends JFrame{
     public Return() {
         this.setLayout(new FlowLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        prepareUi();
+
+        prepareUI();
     }
 
-    void showUi() {
+    void showUI() {
         this.add(sign);
         this.add(bookId);
         this.add(returnBook);
@@ -27,7 +28,7 @@ public class Return extends JFrame{
         this.setVisible(true);
     }
 
-    private void prepareUi() {
+    private void prepareUI() {
         sign = new JLabel("请输入要归还的图书编号:");
         sign.setFont(new Font("宋体",0,20));
 
