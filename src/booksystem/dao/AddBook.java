@@ -1,13 +1,15 @@
 package booksystem.dao;
 
+import booksystem.bean.Book;
+
 import java.sql.*;
 
 public class AddBook {
     public boolean complete = false;
-    private String[] bookInfo;
+    private Book book;
 
-    public AddBook(String[] bookInfo) {
-        this.bookInfo = bookInfo;
+    public AddBook(Book book) {
+        this.book = book;
         execute();
     }
     private void execute() {
@@ -16,8 +18,7 @@ public class AddBook {
             //创建statement类对象
             Statement statement = con.createStatement();
             statement.execute("begin;");
-            String sql = "insert into bookinfo(bookname,bookauthor,booktheme) values" + "(\"" + bookInfo[0]+"\",\""+ bookInfo[1]+ "\",\"" +bookInfo[2]+ "\")";
-            System.out.println(sql);
+            String sql = "insert into bookinfo(bookname,bookauthor,booktheme) values" + "(\"" + book.getBookname() +"\",\""+ book.getBookauthor()+ "\",\"" +book.getBooktheme()+ "\")";
             if(statement.executeUpdate(sql) == 1)
                 complete = true;
             statement.execute("commit;");

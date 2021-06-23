@@ -1,6 +1,7 @@
 package booksystem.ui;
 
 import booksystem.dao.AddBook;
+import booksystem.bean.Book;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,12 +76,12 @@ public class Add extends JFrame {
     }
 
     private void addButtonActionPerformed(ActionEvent e) {
-        String[] bookInfo = new String[3];
-        bookInfo[0] = bookName.getText();
-        bookInfo[1] = bookAuthor.getText();
-        bookInfo[2] = bookTheme.getText();
+        Book book = new Book();
+        book.setBookname(bookName.getText());
+        book.setBookauthor(bookAuthor.getText());
+        book.setBooktheme(bookTheme.getText());
 
-        AddBook ab = new AddBook(bookInfo);
+        AddBook ab = new AddBook(book);
         if(ab.complete)
             JOptionPane.showMessageDialog(this, "添加成功！");
         else

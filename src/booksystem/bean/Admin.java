@@ -1,4 +1,4 @@
-package booksystem.user;
+package booksystem.bean;
 
 /** 管理员
  * 继承自抽象用户类User

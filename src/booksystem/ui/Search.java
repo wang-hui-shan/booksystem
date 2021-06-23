@@ -1,6 +1,7 @@
 package booksystem.ui;
 
 import booksystem.dao.SearchBook;
+import booksystem.bean.Book;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +25,6 @@ public class Search extends JFrame{
 
     public Search() {
         this.setTitle("查询");
-        //setIconImage(new ImageIcon(getClass().getResource("")).getImage());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new BorderLayout());
         searchAreaPanel = new JPanel(new FlowLayout());
@@ -35,8 +35,6 @@ public class Search extends JFrame{
         searchAreaPanel.add(searchType);
         searchAreaPanel.add(searchArea);
         searchAreaPanel.add(search);
-
-
 
         this.add(searchAreaPanel,BorderLayout.NORTH);
         bookTablePanel = new JScrollPane(bookList);
@@ -81,22 +79,19 @@ public class Search extends JFrame{
     private void searchButtonActionPerformed(ActionEvent e) {
         String type = (String)searchType.getSelectedItem();
 
-        HashMap<Integer, ArrayList<String>> booksInfo;
-
         SearchBook sb = new SearchBook(searchArea.getText(), type);
-        booksInfo = sb.getBook();
+        ArrayList<Book> books = sb.getBook();
 
         String[] colsName = {"图书编号","书名","作者","类型","借阅状态"};
-        int Rows = booksInfo.size();
+        int Rows = books.size();
         int Cols = colsName.length;
         Object[][] table = new Object[Rows][Cols];
-        for(Integer bookId : booksInfo.keySet()) {
-            table[Rows -1][0] = bookId;
-            ArrayList<String> values = booksInfo.get(bookId);
-            for (int i = 1; i < Cols; i++) {
-                table[Rows-1][i] = values.get(i-1);
-            }
-            Rows--;
+        for (int i = 0; i < Rows; i++) {
+            table[i][0] = books.get(i).getBookid();
+            table[i][1] = books.get(i).getBookname();
+            table[i][2] = books.get(i).getBookauthor();
+            table[i][3] = books.get(i).getBooktheme();
+            table[i][4] = books.get(i).getBookstatus();
         }
         tableModel.setDataVector(table,colsName);
     }

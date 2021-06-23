@@ -1,5 +1,6 @@
 package booksystem.ui;
 
+import booksystem.bean.Book;
 import booksystem.dao.DeleteBook;
 
 import javax.swing.*;
@@ -48,10 +49,13 @@ public class Delete extends JFrame{
     }
 
     private void returnBookActionPerformed(ActionEvent e) {
-        DeleteBook rb = new DeleteBook(bookId.getText());
-        if(rb.complete)
+        Book book = new Book();
+        book.setBookid(Integer.parseInt(bookId.getText()));
+        DeleteBook rb = new DeleteBook(book);
+        if(rb.complete) {
             JOptionPane.showMessageDialog(this, "成功删除！");
-        else
+        } else {
             JOptionPane.showMessageDialog(this, "这本书已被借出！");
+        }
     }
 }

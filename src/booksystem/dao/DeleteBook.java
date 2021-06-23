@@ -1,13 +1,15 @@
 package booksystem.dao;
 
+import booksystem.bean.Book;
+
 import java.sql.*;
 
 public class DeleteBook {
     public boolean complete = false;
-    private String bookId;
+    private Book book;
 
-    public DeleteBook(String bookId) {
-        this.bookId = bookId;
+    public DeleteBook(Book book) {
+        this.book = book;
         execute();
     }
     private void execute() {
@@ -18,9 +20,9 @@ public class DeleteBook {
             statement.execute("begin;");
             // 确认图书未被借阅
             // 将图书删除
-            ResultSet rs = statement.executeQuery("select bookstatus from bookinfo where bookid=" + this.bookId);
+            ResultSet rs = statement.executeQuery("select bookstatus from bookinfo where bookid=" + this.book.getBookid());
             if(rs.next() && rs.getInt("bookstatus") == 0){
-                statement.executeUpdate("delete from bookinfo where bookid=" + this.bookId);
+                statement.executeUpdate("delete from bookinfo where bookid=" + this.book.getBookid());
                 complete = true;
             }
             statement.execute("commit;");

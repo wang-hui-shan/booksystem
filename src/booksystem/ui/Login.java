@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import booksystem.dao.LoginVerify;
-import booksystem.user.AbsUser;
-import booksystem.user.Admin;
-import booksystem.user.User;
+import booksystem.bean.AbsUser;
+import booksystem.bean.Admin;
+import booksystem.bean.User;
 
 /**
  * 登录界面

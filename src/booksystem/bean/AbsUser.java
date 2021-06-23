@@ -1,4 +1,4 @@
-package booksystem.user;
+package booksystem.bean;
 /**
  * 用户抽象类
  * 定义用户基本属性 用户名 用户id 用户角色

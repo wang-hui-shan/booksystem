@@ -1,5 +1,6 @@
 package booksystem.ui;
 
+import booksystem.bean.Book;
 import booksystem.dao.ReturnBook;
 import javax.swing.*;
 import java.awt.*;
@@ -48,10 +49,13 @@ public class Return extends JFrame{
     }
 
     private void returnBookActionPerformed(ActionEvent e) {
-        ReturnBook rb = new ReturnBook(bookId.getText(), Login.user.getUserId());
-        if(rb.complete)
+        Book book = new Book();
+        book.setBookid(Integer.parseInt(bookId.getText()));
+        ReturnBook rb = new ReturnBook(book, Login.user.getUserId());
+        if(rb.complete) {
             JOptionPane.showMessageDialog(this, "成功归还！");
-        else
+        } else {
             JOptionPane.showMessageDialog(this, "你没有这本书！");
+        }
     }
 }

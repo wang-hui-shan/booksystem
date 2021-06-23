@@ -1,10 +1,12 @@
 package booksystem.ui;
 
+import booksystem.bean.Book;
 import booksystem.dao.GetBorrowBook;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -32,16 +34,18 @@ public class BorrowRecords extends JFrame {
     }
     private void prepareUI() {
         GetBorrowBook userBooks = new GetBorrowBook(Login.user.getUserId());
-
-        HashMap<Integer,String> books = userBooks.getBookList();
-        int numRows = books.size();
-        Object[][] table = new Object[numRows][2];
-        for(Integer bookId : books.keySet()) {
-            table[numRows-1][0] = bookId;
-            table[(numRows--)-1][1] = books.get(bookId);
-        }
+        ArrayList<Book> books = userBooks.getBookList();
         String[] colsName = {"图书编号","书名"};
+        int Rows = books.size();
+        int Cols = colsName.length;
+        Object[][] table = new Object[Rows][Cols];
+        for (int i = 0; i < Rows; i++) {
+            table[i][0] = books.get(i).getBookid();
+            table[i][1] = books.get(i).getBookname();
+        }
+
         bookList = new JTable(new DefaultTableModel(table, colsName){
+            @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }

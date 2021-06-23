@@ -1,4 +1,4 @@
-package booksystem.user;
+package booksystem.bean;
 
 /**
  * 普通用户

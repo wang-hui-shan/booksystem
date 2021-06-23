@@ -1,5 +1,6 @@
 package booksystem.ui;
 
+import booksystem.bean.Book;
 import booksystem.dao.BorrowBook;
 
 import javax.swing.*;
@@ -49,10 +50,13 @@ public class Borrow extends JFrame{
     }
 
     private void returnBookActionPerformed(ActionEvent e) {
-        BorrowBook rb = new BorrowBook(bookId.getText(), Login.user.getUserId());
-        if(rb.complete)
+        Book book = new Book();
+        book.setBookid(Integer.parseInt(bookId.getText()));
+        BorrowBook rb = new BorrowBook(book, Login.user.getUserId());
+        if(rb.complete) {
             JOptionPane.showMessageDialog(this, "借阅成功！");
-        else
+        } else {
             JOptionPane.showMessageDialog(this, "当前书已被借阅！");
+        }
     }
 }
