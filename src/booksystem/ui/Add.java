@@ -82,9 +82,10 @@ public class Add extends JFrame {
         book.setBooktheme(bookTheme.getText());
 
         AddBook ab = new AddBook(book);
-        if(ab.complete)
+        if(ab.complete) {
             JOptionPane.showMessageDialog(this, "添加成功！");
-        else
+        } else {
             JOptionPane.showMessageDialog(this, "添加失败！");
+        }
     }
 }
